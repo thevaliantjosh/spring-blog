@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+a:visited {
+    color: palegoldenrod;
+}
+
+a {
+    color: dodgerblue;
+}

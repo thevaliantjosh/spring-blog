@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Coffee</title>
-</head>
+<head th:replace="partials/partials.html :: head ('Coffee')"></head>
 <body>
+<nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
   <h1>Coffee!</h1>
   <h2 th:unless="${selections}">Select your favored roast:</h2>
   <h2 th:if="${selections}">Your favorite Roast: <span th:text="${selections.get(0).roast}"></span> roast!</h2>
@@ -35,5 +33,6 @@
       </form>
       <p th:if="${email}">Thanks for signing up! We will send the newsletter to <span th:text="${email}"></span></p>
   </div>
+<script th:replace="partials/partials.html :: bootstrap-bundle"></script>
 </body>
 </html>
