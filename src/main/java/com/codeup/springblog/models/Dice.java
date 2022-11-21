@@ -5,15 +5,15 @@ import java.util.Random;
 public class Dice {
 
     //Instance Variables
-    private int number;
+    private String number;
 
     //Getters and Setters
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -23,15 +23,16 @@ public class Dice {
 
     }
 
-    public Dice(int number){
+    public Dice(String number){
         this.number = number;
     }
 
+
     //Methods
 
-    public int rollDice(){
+    public String rollDice(){
         Random generator = new Random();
         int diceRoll = generator.nextInt(6);
-        return diceRoll;
+        return Integer.toString(diceRoll);
     }
 }

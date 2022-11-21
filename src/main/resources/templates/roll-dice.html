@@ -4,6 +4,12 @@
 <body>
 <h1>Roll The Dice!</h1>
 <p>Enter your guess!</p>
+<div th:if="${selections}">
+    <p>
+        You selected:<span th:text="${selections}"></span>
+    </p>
+    </p> The number was: <span th:each="number : ${number}"></span>
+</div>
 <ul>
    <li><a href="roll-dice/1">1</a></li>
    <li><a href="roll-dice/2">2</a></li>
