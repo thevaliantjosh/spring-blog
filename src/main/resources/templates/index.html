@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="partials/partial.html :: head ('All Posts')"></head>
+<body>
+<h1>Your Feed:</h1>
+  <ul th:each="post : ${allPosts}">
+    <li>
+      <h2 th:text="${post.title}"></h2>
+      <p th:text="${post.body}"></p>
+    </li>
+  </ul>
+</body>
+</html>

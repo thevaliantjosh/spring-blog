@@ -22,7 +22,7 @@ public class DiceController {
 
     @GetMapping("/{number}")
     public String numbers(@PathVariable String number, Model model){
-        Dice random = null;
+        Dice random = new Dice();
         Dice selection1 = new Dice("1");
         Dice selection2 = new Dice("2");
         Dice selection3 = new Dice("3");
