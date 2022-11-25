@@ -1,6 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,17 @@ import java.util.List;
 @Controller
 @RequestMapping("/posts")
 public class PostController {
+
+    private final PostRepository postDao;
+
+    //Automatic Dependency Injection for PostRepository into our PostController using a constructor
+
+    public PostController(PostRepository postDao){
+        this.postDao = postDao;
+    }
+
+
+
     @GetMapping
     public String postPage(Model model){
         Post post1 = new Post(1, "First", "This is my first post!!!");

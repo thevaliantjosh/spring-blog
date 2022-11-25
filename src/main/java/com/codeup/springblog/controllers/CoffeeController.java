@@ -55,9 +55,9 @@ public class CoffeeController {
 
     @PostMapping("/new")
     public String addCoffee(@RequestParam(name="roast") String roast, @RequestParam(name="origin") String origin, @RequestParam(name="brand") String brand, @RequestParam(name="supplier") long id){
-        Supplier supplier = suppliersDao.findById(id);
-        Coffee coffee = new Coffee(roast, origin, brand, supplier);
-        coffeeDao.save(coffee);
+//        Supplier supplier = suppliersDao.findById(id);
+//        Coffee coffee = new Coffee(roast, origin, brand, supplier);
+//        coffeeDao.save(coffee);
         return "redirect:/coffee/all-coffees";
 
     }
