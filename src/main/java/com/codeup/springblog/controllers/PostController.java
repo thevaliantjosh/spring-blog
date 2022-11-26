@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/posts")
+//@RequestMapping("/posts")
 public class PostController {
 
     private final PostRepository postDao;
@@ -32,13 +32,27 @@ public class PostController {
 //        return "/posts/index";
 //    }
 
-    @GetMapping
-    public String postPage(Model model){
-        model.addAttribute("posts", postDao.findAll());
+
+    @GetMapping("/posts")
+    public String viewAllPosts(Model model){
+        List<Post> allPosts = postDao.findAll();
+        model.addAttribute("allPosts", allPosts);
         return "/index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("posts/create")
+    public String postPage(){
+        return "/create";
+    }
+
+    @PostMapping("posts/create")
+    public String submitPost(@RequestParam(name= "title") String title, @RequestParam(name="body") String body){
+        Post post = new Post(title, body);
+        postDao.save(post);
+        return "redirect:/posts/index";
+    }
+
+    @GetMapping("posts/{id}")
     public String postIndividual(@PathVariable long id, Model model){
         Post post1 = new Post(1, "First", "This is my First post!!!");
         Post post2 = new Post(2, "Second", "Hey everyone, I'm baaaack");
@@ -55,15 +69,12 @@ public class PostController {
 
     }//End of postIndividual method
 
-    @GetMapping("/create")
-    public String createPost(){
-        return "view the form for creating a post";
-    }
+//    @GetMapping("/create")
+//    public String createPost(){
+//        return "view the form for creating a post";
+//    }
 
-    @PostMapping("/create")
-    public String postCreatedPost(){
-        return "create a new post";
-    }
+
 
 
 }
