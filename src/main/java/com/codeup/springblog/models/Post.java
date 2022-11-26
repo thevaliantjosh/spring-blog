@@ -7,8 +7,10 @@ import javax.persistence.*;
 @Table(name = "posts")
 public class Post {
 
+
+    //Instance Variables
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY);
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false, length = 100 )
@@ -17,6 +19,9 @@ public class Post {
 
     @Column(nullable = false, length = 1000)
     private String body;
+
+
+    //Getters and Setters
 
     public String getTitle(){
         return title;
@@ -41,6 +46,10 @@ public class Post {
     public void setId(long id){
         this.id = id;
     }
+
+
+    //Constructors
+
 
     public Post(){
 

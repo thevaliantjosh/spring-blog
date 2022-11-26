@@ -23,13 +23,19 @@ public class PostController {
 
 
 
+//    @GetMapping
+//    public String postPage(Model model){
+//        Post post1 = new Post(1, "First", "This is my first post!!!");
+//        Post post2 = new Post(2, "Second", "Hey everyone, I'm baaaack");
+//        List<Post> allPosts = new ArrayList<>(List.of(post1, post2));
+//        model.addAttribute("allPosts", allPosts);
+//        return "/posts/index";
+//    }
+
     @GetMapping
     public String postPage(Model model){
-        Post post1 = new Post(1, "First", "This is my first post!!!");
-        Post post2 = new Post(2, "Second", "Hey everyone, I'm baaaack");
-        List<Post> allPosts = new ArrayList<>(List.of(post1, post2));
-        model.addAttribute("allPosts", allPosts);
-        return "/posts/index";
+        model.addAttribute("posts", postDao.findAll());
+        return "/index";
     }
 
     @GetMapping("/{id}")
