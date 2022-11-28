@@ -20,6 +20,9 @@ public class Post {
     @Column(nullable = false, length = 1000)
     private String body;
 
+    @ManyToOne
+    private User owner;
+
 
     //Getters and Setters
 
@@ -47,6 +50,13 @@ public class Post {
         this.id = id;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
     //Constructors
 
@@ -63,6 +73,12 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(String title, String body, User owner){
+        this.title = title;
+        this.body = body;
+        this.owner = owner;
     }
 
 
