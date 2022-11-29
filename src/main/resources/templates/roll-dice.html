@@ -4,19 +4,21 @@
 <body>
 <h1>Roll The Dice!</h1>
 <p>Enter your guess!</p>
-<div th:if="${selections}">
+<div th:if="${guess}">
     <p>
-        You selected:<span th:text="${selections}"></span>
+        You selected:<span th:text="${guess}"></span>
     </p>
-    </p> The number was: <span th:each="number : ${number}"></span>
+    <p> The number was: <span th:text="${randomNumber}"></span></p>
+    <h4 th:if="${randomNumber == guess}"> <strong>YOU WIN!</strong></h4>
+    <p th:if="${randomNumber != guess}"> TRY AGAIN!</p>
 </div>
 <ul>
-   <li><a href="roll-dice/1">1</a></li>
-   <li><a href="roll-dice/2">2</a></li>
-    <li><a href="roll-dice/3">3</a></li>
-    <li><a href="roll-dice/4">4</a></li>
-    <li><a href="roll-dice/5">5</a></li>
-    <li><a href="roll-dice/6">6</a></li>
+   <li><a href="/roll-dice/1">1</a></li>
+   <li><a href="/roll-dice/2">2</a></li>
+    <li><a href="/roll-dice/3">3</a></li>
+    <li><a href="/roll-dice/4">4</a></li>
+    <li><a href="/roll-dice/5">5</a></li>
+    <li><a href="/roll-dice/6">6</a></li>
 </ul>
 </body>
 </html>
