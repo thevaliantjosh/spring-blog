@@ -6,13 +6,13 @@
 </head>
 <body>
 <h1>Edit Post</h1>
-<form th:action="@{|/posts/edit-post/${postId.id}|}" method="POST" th:object="${postId}">
+<form th:action="@{/posts/edit-post/{id} (id=${post.id})}" method="POST" th:object="${post}">
     <label for="title">Title</label>
-    <input type="text" name="title" id="title" th:field="*{title}" th:placeholder="${postId.title}"><br>
+    <input type="text" name="title" id="title" th:field="*{title}" th:placeholder="${post.title}"><br>
     <br>
 
     <label for="body">What's going on?</label>
-    <textarea id="body" name="body" th:field="*{body}" th:placeholder="${postId.body}" rows="4" cols="50"></textarea><br>
+    <textarea id="body" name="body" th:field="*{body}" th:placeholder="${post.body}" rows="4" cols="50"></textarea><br>
     <br>
 
     <input type="submit">

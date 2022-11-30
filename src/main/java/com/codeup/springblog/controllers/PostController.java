@@ -68,20 +68,17 @@ public class PostController {
     }
 
     @GetMapping("/posts/edit-post/{id}")
-    public String editPost(@PathVariable long id, Model model){
-        Post postId = postDao.findById(id);
-        model.addAttribute("postId", postId);
+    public String editPostForm(@PathVariable long id, Model model){
+        Post post = postDao.findById(id);
+        model.addAttribute("post", post);
         return "edit-post";
     }
 
     @PostMapping("/posts/edit-post/{id}")
     public String saveEditPost(@PathVariable long id, @ModelAttribute Post post){
         User user = userDao.findById(1);
-        Post postToBeSaved = postDao.findById(id);
-        postToBeSaved.setOwner(user);
-        postToBeSaved.setTitle(post.getTitle());
-        postToBeSaved.setBody(post.getBody());
-        postDao.save(postToBeSaved);
+        post.setOwner(user);
+        postDao.save(post);
         return "redirect:/posts";
     }
 

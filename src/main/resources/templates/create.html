@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Post</title>
+    <title>Create Post</title>
 </head>
 <body>
+<nav th:replace="partials/partial.html :: bootstrap-nav"></nav>
 <h1>Post Page</h1>
 <form action="/posts/create" method="POST">
     <label for="title">Title</label>
