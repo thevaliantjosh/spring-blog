@@ -51,13 +51,41 @@ public class PostController {
         return "create";
     }
 
+//    @PostMapping("/posts/create")
+//    public String submitPost(@RequestParam(name= "title") String title, @RequestParam(name="body") String body){
+//        User user = userDao.findById(1);
+//        Post post = new Post(title, body, user);
+//        postDao.save(post);
+//        return "redirect:/posts";
+//    }
+
     @PostMapping("/posts/create")
-    public String submitPost(@RequestParam(name= "title") String title, @RequestParam(name="body") String body){
+    public String submitPost(@ModelAttribute Post post){
         User user = userDao.findById(1);
-        Post post = new Post(title, body, user);
+        post.setOwner(user);
         postDao.save(post);
         return "redirect:/posts";
     }
+
+    @GetMapping("/posts/edit-post/{id}")
+    public String editPost(@PathVariable long id, Model model){
+        Post postId = postDao.findById(id);
+        model.addAttribute("postId", postId);
+        return "edit-post";
+    }
+
+    @PostMapping("/posts/edit-post/{id}")
+    public String saveEditPost(@PathVariable long id, @ModelAttribute Post post){
+        User user = userDao.findById(1);
+        Post postToBeSaved = postDao.findById(id);
+        postToBeSaved.setOwner(user);
+        postToBeSaved.setTitle(post.getTitle());
+        postToBeSaved.setBody(post.getBody());
+        postDao.save(postToBeSaved);
+        return "redirect:/posts";
+    }
+
+
 
     @GetMapping("/posts/{id}")
     public String postIndividual(@PathVariable long id, Model model){
